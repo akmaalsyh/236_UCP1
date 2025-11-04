@@ -18,3 +18,13 @@ app.listen(port, () => {
 .catch((err) => {
     console.log(err);
 });
+
+app.post('/film', async (req, res) => {
+    const data = req.body;
+    try {
+        const film = await db.Film.create(data);
+        res.send(film);
+    } catch (err) {
+        res.send(err);
+    }
+});
